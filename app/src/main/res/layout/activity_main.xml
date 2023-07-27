@@ -172,4 +172,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/threePeople"
         app:layout_constraintTop_toBottomOf="@+id/people" />
+
+    <TextView
+        android:id="@+id/order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="С каждого по:"
+        android:textColor="#8BC34A"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

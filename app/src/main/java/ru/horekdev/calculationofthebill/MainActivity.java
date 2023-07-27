@@ -13,14 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText sum;
-    TextView title;
-    TextView twoPeople;
-    TextView threePeople;
-    TextView fourPeople;
-    TextView zero;
-    TextView twenty;
-    TextView fifty;
-    TextView hundred;
+    TextView title, twoPeople, threePeople, fourPeople, zero, twenty, fifty, hundred, order;
     Button start;
     int percent;
     int peopleCount;
@@ -42,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         twenty = findViewById(R.id.twenty);
         fifty = findViewById(R.id.fifty);
         hundred = findViewById(R.id.hundred);
+
+        order = findViewById(R.id.order);
 
         start = findViewById(R.id.startClaculating);
 
@@ -85,15 +80,27 @@ public class MainActivity extends AppCompatActivity {
 
         start.setOnClickListener(view -> {
             MediaControl(click);
-            int result;
+            int result = 0;
+            int tips;
+
             if (percent == 0) {
                 result = Integer.parseInt(sum.getText().toString()) / peopleCount;
-                title.setText(String.valueOf(result));
-
             } else {
-                result = (Integer.parseInt(sum.getText().toString()) / 100) * percent / peopleCount;
-                title.setText(String.valueOf(result));
+                if (percent == 20) {
+                    tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.20);
+                    result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount;
+
+                } else if (percent == 50) {
+                    tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.50);
+                    result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount;
+
+                } else if (percent == 100) {
+                    result = (Integer.parseInt(sum.getText().toString()) + Integer.parseInt(sum.getText().toString())) / peopleCount;
+                }
             }
+
+            order.setVisibility(View.VISIBLE);
+            title.setText(String.valueOf(result));
         });
     }
 
