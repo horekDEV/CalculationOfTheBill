@@ -46,63 +46,63 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.startClaculating);
 
         MediaPlayer click = MediaPlayer.create(this, R.raw.soundbutton);
-        //todo сделать лямбду
 
 
-        zero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                percent = 0;
-                Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 0%", Toast.LENGTH_SHORT).show();
-            }
+        zero.setOnClickListener(view ->  {
+            percent = 0;
+            Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 0%", Toast.LENGTH_SHORT).show();
         });
 
-        twenty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                percent = 20;
-                Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 20%", Toast.LENGTH_SHORT).show();
-            }
+        twenty.setOnClickListener(view ->  {
+            percent = 20;
+            Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 20%", Toast.LENGTH_SHORT).show();
         });
 
-        fifty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                percent = 50;
-                Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 50%", Toast.LENGTH_SHORT).show();
-            }
+        fifty.setOnClickListener(view ->  {
+            percent = 50;
+            Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 50%", Toast.LENGTH_SHORT).show();
         });
 
-        hundred.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                percent = 100;
-                Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 100%", Toast.LENGTH_SHORT).show();
-            }
+        hundred.setOnClickListener(view ->  {
+            percent = 100;
+            Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 100%", Toast.LENGTH_SHORT).show();
         });
 
-        twoPeople.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                peopleCount = 2;
-                Toast.makeText(MainActivity.this, "Вы выбрали, что людей которые будут делить деньги на заказ двое", Toast.LENGTH_SHORT).show();
-            }
+        twoPeople.setOnClickListener(view ->  {
+            peopleCount = 2;
+            Toast.makeText(MainActivity.this, "Вы выбрали, что людей которые будут делить деньги на заказ двое", Toast.LENGTH_SHORT).show();
         });
 
-        threePeople.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                peopleCount = 3;
-                Toast.makeText(MainActivity.this, "Вы выбрали, что людей которые будут делить деньги на заказ трое", Toast.LENGTH_SHORT).show();
-            }
+        threePeople.setOnClickListener(view ->  {
+            peopleCount = 3;
+            Toast.makeText(MainActivity.this, "Вы выбрали, что людей которые будут делить деньги на заказ трое", Toast.LENGTH_SHORT).show();
         });
 
-        fourPeople.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                peopleCount = 4;
-                Toast.makeText(MainActivity.this, "Вы выбрали, что людей которые будут делить деньги на заказ четверо", Toast.LENGTH_SHORT).show();
+        fourPeople.setOnClickListener(view ->  {
+            peopleCount = 4;
+            Toast.makeText(MainActivity.this, "Вы выбрали, что людей которые будут делить деньги на заказ четверо", Toast.LENGTH_SHORT).show();
+        });
+
+        start.setOnClickListener(view -> {
+            MediaControl(click);
+            int result;
+            if (percent == 0) {
+                result = Integer.parseInt(sum.getText().toString()) / peopleCount;
+                title.setText(String.valueOf(result));
+
+            } else {
+                result = (Integer.parseInt(sum.getText().toString()) / 100) * percent / peopleCount;
+                title.setText(String.valueOf(result));
             }
         });
+    }
+
+    public void MediaControl(MediaPlayer sound) {
+        if (sound.isPlaying()) {
+            sound.pause();
+            sound.seekTo(0);
+        }
+
+        sound.start();
     }
 }
