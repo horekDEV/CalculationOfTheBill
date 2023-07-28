@@ -23,13 +23,15 @@
         android:id="@+id/startClaculating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="170dp"
         android:backgroundTint="#8BC34A"
         android:text="Посчитать"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/people" />
 
     <EditText
         android:id="@+id/sum"
@@ -60,14 +62,15 @@
         android:id="@+id/zero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="250dp"
         android:fontFamily="@font/montserrat_subrayada_bold"
         android:text="0%"
         android:textColor="#8BC34A"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/startClaculating"
+        app:layout_constraintBottom_toTopOf="@+id/people"
+        app:layout_constraintEnd_toStartOf="@+id/hundred"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tips" />
 
@@ -77,12 +80,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="150dp"
         android:fontFamily="@font/montserrat_subrayada_bold"
         android:text="20%"
         android:textColor="#8BC34A"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/startClaculating"
+        app:layout_constraintBottom_toTopOf="@+id/people"
+        app:layout_constraintEnd_toStartOf="@+id/hundred"
         app:layout_constraintStart_toEndOf="@+id/zero"
         app:layout_constraintTop_toBottomOf="@+id/tips" />
 
@@ -92,13 +96,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="30dp"
         android:fontFamily="@font/montserrat_subrayada_bold"
         android:text="50%"
         android:textColor="#8BC34A"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/startClaculating"
+        app:layout_constraintBottom_toTopOf="@+id/people"
         app:layout_constraintEnd_toStartOf="@+id/hundred"
         app:layout_constraintStart_toEndOf="@+id/twenty"
         app:layout_constraintTop_toBottomOf="@+id/tips" />
@@ -109,33 +112,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="230dp"
         android:fontFamily="@font/montserrat_subrayada_bold"
         android:text="100%"
         android:textColor="#8BC34A"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/startClaculating"
+        app:layout_constraintBottom_toTopOf="@+id/people"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fifty"
         app:layout_constraintTop_toBottomOf="@+id/tips" />
 
     <TextView
         android:id="@+id/people"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
         android:fontFamily="@font/alfa_slab_one"
         android:text="Кол-во человек"
         android:textColor="#8BC34A"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tips" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/twoPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/alfa_slab_one"
         android:text="2"
         android:textColor="#8BC34A"
@@ -149,7 +152,7 @@
         android:id="@+id/threePeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/alfa_slab_one"
         android:text="3"
         android:textColor="#8BC34A"
@@ -163,7 +166,7 @@
         android:id="@+id/fourPeople"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/alfa_slab_one"
         android:text="4"
         android:textColor="#8BC34A"
@@ -186,4 +189,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="170dp"
+        android:backgroundTint="#8BC34A"
+        android:text="Очистить"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/startClaculating"
+        app:layout_constraintTop_toBottomOf="@+id/people" />
 </androidx.constraintlayout.widget.ConstraintLayout>

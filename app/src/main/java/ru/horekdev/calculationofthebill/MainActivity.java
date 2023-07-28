@@ -8,12 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     EditText sum;
     TextView title, twoPeople, threePeople, fourPeople, zero, twenty, fifty, hundred, order;
     Button start;
+    Button clear;
     int percent;
     int peopleCount;
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         order = findViewById(R.id.order);
 
         start = findViewById(R.id.startClaculating);
+        clear = findViewById(R.id.clear);
 
         MediaPlayer click = MediaPlayer.create(this, R.raw.soundbutton);
 
@@ -82,25 +85,60 @@ public class MainActivity extends AppCompatActivity {
             int result = 0;
             int tips;
 
-            if (percent == 0) {
-                result = Integer.parseInt(sum.getText().toString()) / peopleCount;
-            } else {
-                if (percent == 20) {
-                    tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.20);
-                    result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount;
+            if (peopleCount > 1) {
+                if (percent == 0) {
+                    result = Integer.parseInt(sum.getText().toString()) / peopleCount;
+                } else {
+                    if (percent == 20) {
+                        tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.20);
+                        result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount;
 
-                } else if (percent == 50) {
-                    tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.50);
-                    result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount;
+                    } else if (percent == 50) {
+                        tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.50);
+                        result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount;
 
-                } else if (percent == 100) {
-                    result = (Integer.parseInt(sum.getText().toString()) + Integer.parseInt(sum.getText().toString())) / peopleCount;
+                    } else if (percent == 100) {
+                        result = (Integer.parseInt(sum.getText().toString()) + Integer.parseInt(sum.getText().toString())) / peopleCount;
+                    }
                 }
+            } else {
+                order.setVisibility(View.INVISIBLE);
+                title.setText("Счетчик");
+                Toast.makeText(this, "Вы не указали кол-во человек!", Toast.LENGTH_SHORT).show();
             }
 
             order.setVisibility(View.VISIBLE);
             title.setText(String.valueOf(result));
         });
+
+        clear.setOnClickListener(view -> {
+            MediaControl(click);
+
+            order.setVisibility(View.INVISIBLE);
+            title.setText("Счетчик");
+
+            peopleCount = 0;
+            percent = 0;
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Вы уверены, что хотите выйти?");
+        builder.setMessage("весь процесс будет удален!");
+        builder.setPositiveButton("да, я хочу выйти", (dialogInterface, i) -> {
+            dialogInterface.dismiss();
+        });
+
+        builder.setNegativeButton("нет, я хочу остаться", (dialogInterface, i) -> {
+            dialogInterface.cancel();
+        });
+
+        builder.create();
     }
 
     public void MediaControl(MediaPlayer sound) {
