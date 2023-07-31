@@ -42,7 +42,7 @@ public class RequestsPageActivity extends AppCompatActivity {
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "Нет данных", Toast.LENGTH_SHORT).show();
         } else {
-            while (cursor.moveToNext()) {
+                while (cursor.moveToNext()) {
                 id.add(cursor.getString(0));
                 author.add(cursor.getString(1));
                 email.add(cursor.getString(2));
