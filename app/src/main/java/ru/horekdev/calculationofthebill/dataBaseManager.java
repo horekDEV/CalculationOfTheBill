@@ -1,8 +1,10 @@
 package ru.horekdev.calculationofthebill;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -39,5 +41,22 @@ public class dataBaseManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+    }
+
+    public void addRequest(String author, String email, String comment) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(REQUEST_AUTHOR, author);
+        contentValues.put(REQUEST_AUTHOR_EMAIL, email);
+        contentValues.put(REQUEST_AUTHOR_COMMENT, comment);
+
+        long res = db.insert(TABLE_NAME, null, contentValues);
+
+        if (res == -1) {
+            Toast.makeText(context, "Ошибка, что-то пошло не так!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Ваш запрос отправлен, мы скоро рассмотрим его", Toast.LENGTH_SHORT).show();
+        }
     }
 }

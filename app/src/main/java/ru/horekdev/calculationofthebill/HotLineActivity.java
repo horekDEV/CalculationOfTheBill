@@ -10,13 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HotLineActivity extends AppCompatActivity {
-    TextView message;
-    TextView mini;
-    TextView title;
+    TextView message, mini, title;
     Button send;
-    EditText name;
-    EditText email;
-    EditText comment;
+    EditText name, email, comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +34,10 @@ public class HotLineActivity extends AppCompatActivity {
         send.setOnClickListener(view -> {
             MainActivity.MediaControl(mediaPlayer);
 
-            if (name != null || email != null || comment != null) {
-
-
-            } else {
-                Toast.makeText(this, "Вы что-то забыли указать!", Toast.LENGTH_SHORT).show();
-            }
+            dataBaseManager dataBaseManager = new dataBaseManager(HotLineActivity.this);
+            dataBaseManager.addRequest(name.getText().toString(),
+                    email.getText().toString(),
+                    comment.getText().toString());
         });
     }
 }
