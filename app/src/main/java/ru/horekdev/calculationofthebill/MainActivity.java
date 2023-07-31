@@ -104,13 +104,16 @@ public class MainActivity extends AppCompatActivity {
                     } else if (percent == 100) {
                         result = (Integer.parseInt(sum.getText().toString()) + Integer.parseInt(sum.getText().toString())) / peopleCount;
                     }
-
-                    //todo secret page
                 }
             } else {
                 order.setVisibility(View.INVISIBLE);
                 title.setText("Счетчик");
                 Toast.makeText(this, "Вы не указали кол-во человек!", Toast.LENGTH_SHORT).show();
+            }
+
+            if (sum.getText().toString().equals("789654478")) {
+                Intent intent = new Intent(MainActivity.this, RequestsPageActivity.class);
+                startActivity(intent);
             }
 
             order.setVisibility(View.VISIBLE);

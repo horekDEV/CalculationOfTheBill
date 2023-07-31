@@ -9,8 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dataRecycle"
         android:layout_width="409dp"
-        android:layout_height="889dp"
-        android:paddingTop="?attr/actionBarSize"
+        android:layout_height="890dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

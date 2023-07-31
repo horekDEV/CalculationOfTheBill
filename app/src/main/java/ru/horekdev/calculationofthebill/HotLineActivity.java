@@ -20,7 +20,6 @@ public class HotLineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hot_line);
 
-        message = findViewById(R.id.forPersonMessage);
         mini = findViewById(R.id.miniTitle);
         title = findViewById(R.id.hotlineTitle);
 
