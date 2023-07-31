@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,6 +39,15 @@ public class HotLineActivity extends AppCompatActivity {
             dataBaseManager.addRequest(name.getText().toString(),
                     email.getText().toString(),
                     comment.getText().toString());
+
+            name.setVisibility(View.INVISIBLE);
+            email.setVisibility(View.INVISIBLE);
+            comment.setVisibility(View.INVISIBLE);
+            send.setVisibility(View.INVISIBLE);
+            mini.setVisibility(View.INVISIBLE);
+            title.setVisibility(View.INVISIBLE);
+
+            message.setVisibility(View.VISIBLE);
         });
     }
 }
