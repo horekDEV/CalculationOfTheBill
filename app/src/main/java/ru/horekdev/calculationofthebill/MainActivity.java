@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                     } else if (percent == 100) {
                         result = (Integer.parseInt(sum.getText().toString()) + Integer.parseInt(sum.getText().toString())) / peopleCount;
                     }
+
+                    //todo secret page
                 }
             } else {
                 order.setVisibility(View.INVISIBLE);

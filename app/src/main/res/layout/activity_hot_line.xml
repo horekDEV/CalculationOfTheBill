@@ -78,17 +78,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/personComment" />
 
-    <TextView
-        android:id="@+id/forPersonMessage"
-        android:layout_width="386dp"
-        android:layout_height="89dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Ваш запрос был отправлен!, мы свяжимся с вами в ближайшее время"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

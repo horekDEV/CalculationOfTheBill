@@ -2,6 +2,7 @@ package ru.horekdev.calculationofthebill;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -58,5 +59,17 @@ public class dataBaseManager extends SQLiteOpenHelper {
         } else {
             Toast.makeText(context, "Ваш запрос отправлен, мы скоро рассмотрим его", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public
+    Cursor getRequest() {
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
     }
 }
