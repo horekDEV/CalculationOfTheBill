@@ -1,10 +1,12 @@
 package ru.horekdev.calculationofthebill;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextView title, twoPeople, threePeople, fourPeople, zero, twenty, fifty, hundred, order;
     Button start;
     Button clear;
+    ImageButton phone;
     int percent;
     int peopleCount;
 
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         start = findViewById(R.id.startClaculating);
         clear = findViewById(R.id.clear);
+        phone = findViewById(R.id.phone);
 
         MediaPlayer click = MediaPlayer.create(this, R.raw.soundbutton);
 
@@ -120,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
             peopleCount = 0;
             percent = 0;
         });
+
+        phone.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, HotLineActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -141,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         builder.create();
     }
 
-    public void MediaControl(MediaPlayer sound) {
+    public static void MediaControl(MediaPlayer sound) {
         if (sound.isPlaying()) {
             sound.pause();
             sound.seekTo(0);
