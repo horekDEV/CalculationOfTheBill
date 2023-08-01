@@ -39,7 +39,8 @@ public class RequestsPageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         deleteBtn.setOnClickListener(view -> {
-            dataBaseManager.deleteAllRequests();
+            recyclerView.removeAllViewsInLayout();
+            recyclerView.removeAllViews();
         });
     }
 

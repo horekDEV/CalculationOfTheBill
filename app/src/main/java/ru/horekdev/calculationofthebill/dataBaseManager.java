@@ -44,11 +44,10 @@ public class dataBaseManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
 
-    public void addRequest(String author, String email, String comment) {
+    public void addRequest(String email, String comment) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(REQUEST_AUTHOR, author);
         contentValues.put(REQUEST_AUTHOR_EMAIL, email);
         contentValues.put(REQUEST_AUTHOR_COMMENT, comment);
 
@@ -69,18 +68,6 @@ public class dataBaseManager extends SQLiteOpenHelper {
         if (db != null) {
             cursor = db.rawQuery(query, null);
         }
-        return cursor;
-    }
-
-    public Cursor deleteAllRequests() {
-        String queryDelete = "DROP TABLE " + TABLE_NAME;
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = null;
-        if (db != null) {
-            cursor = db.rawQuery(queryDelete, null);
-        }
-
         return cursor;
     }
 }

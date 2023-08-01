@@ -1,17 +1,16 @@
 package ru.horekdev.calculationofthebill;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class HotLineActivity extends AppCompatActivity {
-    TextView message, mini, title;
+    TextView mini, title;
     Button send;
     EditText name, email, comment;
 
@@ -35,8 +34,7 @@ public class HotLineActivity extends AppCompatActivity {
             MainActivity.MediaControl(mediaPlayer);
 
             dataBaseManager dataBaseManager = new dataBaseManager(HotLineActivity.this);
-            dataBaseManager.addRequest(name.getText().toString(),
-                    email.getText().toString(),
+            dataBaseManager.addRequest(email.getText().toString(),
                     comment.getText().toString());
 
             name.setVisibility(View.INVISIBLE);
@@ -45,8 +43,6 @@ public class HotLineActivity extends AppCompatActivity {
             send.setVisibility(View.INVISIBLE);
             mini.setVisibility(View.INVISIBLE);
             title.setVisibility(View.INVISIBLE);
-
-            message.setVisibility(View.VISIBLE);
         });
     }
 }
