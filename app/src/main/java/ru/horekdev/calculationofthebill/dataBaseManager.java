@@ -61,8 +61,7 @@ public class dataBaseManager extends SQLiteOpenHelper {
         }
     }
 
-    public
-    Cursor getRequest() {
+    public Cursor getRequest() {
         String query = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -70,6 +69,18 @@ public class dataBaseManager extends SQLiteOpenHelper {
         if (db != null) {
             cursor = db.rawQuery(query, null);
         }
+        return cursor;
+    }
+
+    public Cursor deleteAllRequests() {
+        String queryDelete = "DROP TABLE " + TABLE_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(queryDelete, null);
+        }
+
         return cursor;
     }
 }

@@ -2,6 +2,7 @@ package ru.horekdev.calculationofthebill;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class RequestsPageActivity extends AppCompatActivity {
     ArrayList<String> id, author, email, comment;
     RecyclerView recyclerView;
     CustomAdapter customAdapter;
+    Button deleteBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class RequestsPageActivity extends AppCompatActivity {
 
         dataBaseManager = new dataBaseManager(this);
         recyclerView = findViewById(R.id.dataRecycle);
+        deleteBtn = findViewById(R.id.delete);
 
         id = new ArrayList<>();
         author = new ArrayList<>();
@@ -34,6 +37,10 @@ public class RequestsPageActivity extends AppCompatActivity {
         customAdapter = new CustomAdapter(this, comment, id, email);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        deleteBtn.setOnClickListener(view -> {
+            dataBaseManager.deleteAllRequests();
+        });
     }
 
     private void displayData() {
