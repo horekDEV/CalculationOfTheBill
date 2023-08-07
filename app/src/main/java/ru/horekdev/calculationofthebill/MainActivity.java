@@ -111,11 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Вы не указали кол-во человек!", Toast.LENGTH_SHORT).show();
             }
 
-            if (sum.getText().toString().equals("789654478")) {
-                Intent intent = new Intent(MainActivity.this, RequestsPageActivity.class);
-                startActivity(intent);
-            }
-
             order.setVisibility(View.VISIBLE);
             title.setText(String.valueOf(result));
         });
