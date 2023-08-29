@@ -33,10 +33,6 @@ public class HotLineActivity extends AppCompatActivity {
         send.setOnClickListener(view -> {
             MainActivity.MediaControl(mediaPlayer);
 
-            dataBaseManager dataBaseManager = new dataBaseManager(HotLineActivity.this);
-            dataBaseManager.addRequest(email.getText().toString(),
-                    comment.getText().toString());
-
             name.setVisibility(View.INVISIBLE);
             email.setVisibility(View.INVISIBLE);
             comment.setVisibility(View.INVISIBLE);

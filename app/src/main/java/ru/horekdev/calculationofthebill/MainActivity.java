@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
         clear.setOnClickListener(view -> {
             MediaControl(click);
 
+            if (!sum.getText().toString().isEmpty()) {
+                sum.setText("");
+            }
+
             order.setVisibility(View.INVISIBLE);
             title.setText("Счетчик");
 
