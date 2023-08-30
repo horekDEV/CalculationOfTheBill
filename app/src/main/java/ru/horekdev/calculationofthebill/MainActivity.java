@@ -139,13 +139,9 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setTitle("Вы уверены, что хотите выйти?");
         builder.setMessage("весь процесс будет удален!");
-        builder.setPositiveButton("да, я хочу выйти", (dialogInterface, i) -> {
-            dialogInterface.dismiss();
-        });
+        builder.setPositiveButton("да, я хочу выйти", (dialogInterface, i) -> dialogInterface.dismiss());
 
-        builder.setNegativeButton("нет, я хочу остаться", (dialogInterface, i) -> {
-            dialogInterface.cancel();
-        });
+        builder.setNegativeButton("нет, я хочу остаться", (dialogInterface, i) -> dialogInterface.cancel());
 
         builder.create();
     }
