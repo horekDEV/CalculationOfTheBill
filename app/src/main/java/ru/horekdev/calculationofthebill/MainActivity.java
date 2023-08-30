@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             MediaControl(click);
 
             if (!sum.getText().toString().isEmpty()) {
-                sum.setText("");
+                sum.clearComposingText();
             }
 
             order.setVisibility(View.INVISIBLE);
