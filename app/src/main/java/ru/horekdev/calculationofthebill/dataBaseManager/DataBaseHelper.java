@@ -5,25 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    Context context;
-    SQLiteDatabase.CursorFactory factory;
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public SQLiteDatabase.CursorFactory getFactory() {
-        return factory;
-    }
-
-    public void setFactory(SQLiteDatabase.CursorFactory factory) {
-        this.factory = factory;
-    }
-
     public DataBaseHelper(Context context, SQLiteDatabase.CursorFactory factory) {
         super(context, "reports", factory, 1);
     }

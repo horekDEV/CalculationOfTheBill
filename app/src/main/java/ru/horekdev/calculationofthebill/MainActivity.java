@@ -129,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, HotLineActivity.class);
             startActivity(intent);
         });
+
+        onBackPressed();
     }
 
     @Override
