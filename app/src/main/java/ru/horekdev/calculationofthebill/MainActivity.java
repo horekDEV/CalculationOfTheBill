@@ -16,24 +16,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView title, twoPeople, threePeople, fourPeople,
+            zero, twenty, fifty, hundred, order;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         EditText sum = findViewById(R.id.sum);
-        TextView title = findViewById(R.id.title);
+        title = findViewById(R.id.title);
 
-        TextView twoPeople = findViewById(R.id.twoPeople);
-        TextView threePeople = findViewById(R.id.threePeople);
-        TextView fourPeople = findViewById(R.id.fourPeople);
+        twoPeople = findViewById(R.id.twoPeople);
+        threePeople = findViewById(R.id.threePeople);
+        fourPeople = findViewById(R.id.fourPeople);
 
-        TextView zero = findViewById(R.id.zero);
-        TextView twenty = findViewById(R.id.twenty);
-        TextView fifty = findViewById(R.id.fifty);
-        TextView hundred = findViewById(R.id.hundred);
+        zero = findViewById(R.id.zero);
+        twenty = findViewById(R.id.twenty);
+        fifty = findViewById(R.id.fifty);
+        hundred = findViewById(R.id.hundred);
 
-        TextView order = findViewById(R.id.order);
+        order = findViewById(R.id.order);
 
         Button start = findViewById(R.id.startClaculating);
         Button clear = findViewById(R.id.clear);
@@ -43,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         AtomicInteger peopleCount = new AtomicInteger(2);
 
         MediaPlayer click = MediaPlayer.create(this, R.raw.soundbutton);
-
 
         zero.setOnClickListener(view ->  {
             percent.set(0);
