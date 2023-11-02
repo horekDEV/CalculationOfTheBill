@@ -135,21 +135,6 @@ public class MainActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle("Вы уверены, что хотите выйти?");
-        builder.setMessage("весь процесс будет удален!");
-        builder.setPositiveButton("да, я хочу выйти", (dialogInterface, i) -> dialogInterface.dismiss());
-
-        builder.setNegativeButton("нет, я хочу остаться", (dialogInterface, i) -> dialogInterface.cancel());
-
-        builder.create();
-    }
-
     public static void MediaControl(MediaPlayer sound) {
         if (sound.isPlaying()) {
             sound.pause();
