@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MainActivity extends AppCompatActivity {
     private TextView title, twoPeople, threePeople, fourPeople,
             zero, twenty, fifty, hundred, order;
+    private Button start, clear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         order = findViewById(R.id.order);
 
-        Button start = findViewById(R.id.startClaculating);
-        Button clear = findViewById(R.id.clear);
+        start = findViewById(R.id.startClaculating);
+        clear = findViewById(R.id.clear);
         ImageButton phone = findViewById(R.id.phone);
 
         AtomicInteger percent = new AtomicInteger();
