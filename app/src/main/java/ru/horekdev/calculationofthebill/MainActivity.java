@@ -15,7 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView title, twoPeople, threePeople, fourPeople,
+    public EditText sum;
+    public AtomicInteger percent = new AtomicInteger();
+    public AtomicInteger peopleCount = new AtomicInteger(2);
+    public TextView title;
+    private MediaPlayer click;
+    private TextView twoPeople, threePeople, fourPeople,
             zero, twenty, fifty, hundred, order;
     private Button start, clear;
 
@@ -24,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText sum = findViewById(R.id.sum);
+        sum = findViewById(R.id.sum);
         title = findViewById(R.id.title);
 
         twoPeople = findViewById(R.id.twoPeople);
@@ -42,10 +47,7 @@ public class MainActivity extends AppCompatActivity {
         clear = findViewById(R.id.clear);
         ImageButton phone = findViewById(R.id.phone);
 
-        AtomicInteger percent = new AtomicInteger();
-        AtomicInteger peopleCount = new AtomicInteger(2);
-
-        MediaPlayer click = MediaPlayer.create(this, R.raw.soundbutton);
+        click = MediaPlayer.create(this, R.raw.soundbutton);
 
         zero.setOnClickListener(view ->  {
             percent.set(0);
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         twenty.setOnClickListener(view ->  {
             percent.set(20);
-            Toast.makeText(MainActivity.this, "Вы выбрали, что чаевые будут составлять 20%", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,  "Вы выбрали, что чаевые будут составлять 20%", Toast.LENGTH_SHORT).show();
         });
 
         fifty.setOnClickListener(view ->  {
@@ -82,50 +84,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Вы выбрали, что людей которые будут делить деньги на заказ четверо", Toast.LENGTH_SHORT).show();
         });
 
-        start.setOnClickListener(view -> {
-            MediaControl(click);
-            int result = 0;
-            int tips;
-
-            if (peopleCount.get() > 1) {
-                if (percent.get() == 0) {
-                    result = Integer.parseInt(sum.getText().toString()) / peopleCount.get();
-                } else {
-                    if (percent.get() == 20) {
-                        tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.20);
-                        result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount.get();
-
-                    } else if (percent.get() == 50) {
-                        tips = (int) (Integer.parseInt(sum.getText().toString()) * 0.50);
-                        result = Integer.parseInt(sum.getText().toString()) + tips / peopleCount.get();
-
-                    } else if (percent.get() == 100) {
-                        result = (Integer.parseInt(sum.getText().toString()) + Integer.parseInt(sum.getText().toString())) / peopleCount.get();
-                    }
-                }
-            } else {
-                order.setVisibility(View.INVISIBLE);
-                title.setText("Счетчик");
-                Toast.makeText(this, "Вы не указали кол-во человек!", Toast.LENGTH_SHORT).show();
-            }
-
-            order.setVisibility(View.VISIBLE);
-            title.setText(String.valueOf(result));
-        });
-
-        clear.setOnClickListener(view -> {
-            MediaControl(click);
-
-            if (!sum.getText().toString().isEmpty()) {
-                sum.clearComposingText();
-            }
-
-            order.setVisibility(View.INVISIBLE);
-            title.setText("Счетчик");
-
-            peopleCount.set(0);
-            percent.set(0);
-        });
+        start.setOnClickListener(view -> startBtnLogic());
+        clear.setOnClickListener(view -> clearBtnLogic());
 
         phone.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, HotLineActivity.class);
@@ -140,5 +100,58 @@ public class MainActivity extends AppCompatActivity {
         }
 
         sound.start();
+    }
+
+    private void clearBtnLogic() {
+        MediaControl(click);
+
+        if (!sum.getText().toString().isEmpty()) {
+            sum.clearComposingText();
+        }
+
+        order.setVisibility(View.INVISIBLE);
+        title.setText("Счетчик");
+
+        peopleCount.set(2);
+        percent.set(0);
+    }
+
+    private void startBtnLogic() {
+        MediaControl(click);
+        order.setVisibility(View.VISIBLE);
+        setSumOnTitle();
+    }
+
+    public double counter(AtomicInteger people, AtomicInteger percent, TextView sum) {
+        double peopleCount = Double.parseDouble(people.toString());
+        double sumText = Double.parseDouble(sum.getText().toString());
+        double percents = Double.parseDouble(percent.toString());
+
+        double tips;
+        double result = 0;
+
+        if (percents == 0.0) {
+            result = sumText / peopleCount;
+        } else {
+            if (percents == 20.0) {
+                tips = sumText * 0.20;
+                result = sumText + tips / peopleCount;
+
+            } else if (percents == 50.0) {
+                tips = sumText * 0.50;
+                result = sumText + tips / peopleCount;
+
+            } else if (percents == 100.0) {
+                result = sumText + sumText / peopleCount;
+            }
+        }
+
+        return result;
+    }
+
+    private void setSumOnTitle() {
+        title.setText(
+                String.valueOf(counter(peopleCount, percent, sum))
+        );
     }
 }
